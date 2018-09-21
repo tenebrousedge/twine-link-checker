@@ -1,8 +1,9 @@
-# Twine::Link::Checker
+# TwineLinkChecker
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/twine/link/checker`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem is an extremely simplistic tool to find broken links in twine projects. It will probably work just fine with any text file containing relative paths. It will not handle absolute paths correctly, nor does it support all allowable characters in filenames.
 
-TODO: Delete this and the text above, and describe your gem
+The currently supported file extensions are: jpg jpeg webm png gif
+Expect erroneous results if the path or filename contain those strings (other than at the end).
 
 ## Installation
 
@@ -22,7 +23,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    $ twine-link-checker missing path/to/your/html/file
+
+"missing" is the only command, it should produce the relative paths of any missing files.
 
 ## Development
 
@@ -32,7 +35,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/twine-link-checker. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/tenebrousedge/twine-link-checker. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -40,4 +43,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Twine::Link::Checker project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/twine-link-checker/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the TwineLinkChecker project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/twine-link-checker/blob/master/CODE_OF_CONDUCT.md).
