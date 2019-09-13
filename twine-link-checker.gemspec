@@ -1,26 +1,29 @@
-
-lib = File.expand_path("../lib", __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "twine-link-checker/version"
+require 'twine_link_checker/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "twine-link-checker"
-  spec.version       = Twine::Link::Checker::VERSION
-  spec.authors       = ["Kai"]
-  spec.email         = ["canhascodez@gmail.com"]
+  spec.name          = 'twine_link_checker'
+  spec.version       = TwineLinkChecker::VERSION
+  spec.authors       = ['Kai']
+  spec.email         = ['canhascodez@gmail.com']
 
-  spec.summary       = %q{This gem extracts file paths from a HTML document, and prints any which do not exist.}
-  spec.description   = %q{It should extract and test file paths from a variety of documents, but this is a "quick-and-dirty" solution intended only to cover common use cases.}
-  spec.homepage      = "https://github.com/tenebrousedge/twine-link-checker"
-  spec.license       = "MIT"
+  spec.summary       = 'Fixes broken links in Twine games caused by case-sensitivity'
+  spec.description   = 'If a document contains a reference to file that '\
+   'does not exist, but a case-insensitive match for the file does exist, '\
+   'then this tool will substitute the correct reference. It does not handle'\
+   ' all possible characters which may appear in filenames, and only handles'\
+   ' links with certain specified image extensions (jpg jpeg webm gif png).'
+  spec.homepage      = 'https://github.com/tenebrousedge/twine_link_checker'
+  spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "https://rubygems.org" 
+    spec.metadata['allowed_push_host'] = 'https://rubygems.org'
   else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
+    raise 'RubyGems 2.0 or newer is required to protect against ' \
+      'public gem pushes.'
   end
 
   # Specify which files should be added to the gem when it is released.
@@ -28,13 +31,15 @@ Gem::Specification.new do |spec|
   spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   end
-  spec.bindir        = "exe"
+  spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.require_paths = ['lib']
 
-  spec.add_development_dependency "bundler", "~> 1.16"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "minitest", "~> 5.0"
-  spec.add_dependency "htmlentities"
-  spec.add_dependency "thor"
+  spec.add_development_dependency 'bundler', '~> 1.16'
+  spec.add_development_dependency 'debase', '~> 0.2.1'
+  spec.add_development_dependency 'minitest', '~> 5.0'
+  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'ruby-debug-ide', '~> 0.7.0'
+  spec.add_dependency 'htmlentities'
+  spec.add_dependency 'thor'
 end

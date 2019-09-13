@@ -1,0 +1,10 @@
+AllCops:
+  Exclude:
+    - bin
+    - '*.gemspec'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*_test.rb'
+
+
