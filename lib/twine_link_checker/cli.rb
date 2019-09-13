@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'thor'
-require 'twine_link_checker'
+require 'twine_link_checker/twine_link_checker'
 
 module TwineLinkChecker
   # Command line interface for twine_link_checker
