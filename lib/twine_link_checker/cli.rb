@@ -8,9 +8,9 @@ module TwineLinkChecker
   class CLI < Thor
     desc 'show missing paths', 'shows which image links do not exist on disk'
     def missing(filename)
-      puts File.open(filename)
-               .extend(TwineLinkChecker::FileParser)
-               .missing_paths
+      file = File.open(filename).extend(TwineLinkChecker::FileParser)
+      puts file.missing_paths
+      file.close
     end
 
     desc 'fixes missing paths', 'outputs file with correctly-cased paths. '\
@@ -21,6 +21,7 @@ module TwineLinkChecker
         count = o.write(file.fix_paths)
         puts "Wrote #{count} bytes."
       end
+      file.close
     end
   end
 end

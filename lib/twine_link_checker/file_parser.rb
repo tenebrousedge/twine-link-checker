@@ -7,7 +7,7 @@ module TwineLinkChecker
   module FileParser
     EXTS = %w[jpg jpeg webm gif png].join('|').freeze
 
-    FILE_MATCHER = %r{(?:[./[:alnum:]])[[:alnum:]&_/\\'-]*\.(?:#{EXTS})}i.freeze
+    FILE_MATCHER = %r{(?:[./[:alnum:]])[[:alnum:] &_/\\'-]*\.(?:#{EXTS})}i.freeze
     # should match most filenames
 
     def each_path
@@ -43,7 +43,6 @@ module TwineLinkChecker
     end
 
     def fix_paths
-      rewind
       hash = Hash.new { |h, k| h[k] = k }.merge(real_paths.to_h.compact)
       rewind
       read.gsub(FILE_MATCHER, hash)
