@@ -16,10 +16,10 @@ module TwineLinkChecker
     desc 'fixes missing paths', 'outputs file with correctly-cased paths. '\
     'OVERWRITES ORIGINAL FILE BY DEFAULT'
     def fix(filename, output = filename)
-      file = File.open(filename).extend(TwineLinkChecker::FileParser)
-      File.open(output) do |o|
+      file = File.open(filename, 'w+').extend(TwineLinkChecker::FileParser)
+      File.open(output, 'w') do |o|
         count = o.write(file.fix_paths)
-        puts "Wrote #{count} lines."
+        puts "Wrote #{count} bytes."
       end
     end
   end
